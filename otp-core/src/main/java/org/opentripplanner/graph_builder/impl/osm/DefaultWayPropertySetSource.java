@@ -351,6 +351,14 @@ public class DefaultWayPropertySetSource implements WayPropertySetSource {
         setProperties(props, "highway=motorway_link;bicycle=designated",
                 StreetTraversalPermission.BICYCLE_AND_DRIVING, 2, 2);
 
+        // Permissions for trains, subway, and public service vehiciles
+        setProperties(props, "railway=tram", StreetTraversalPermission.TRAM);
+        setProperties(props, "railway=light_rail", StreetTraversalPermission.TRAM);
+        setProperties(props, "railway=subway", StreetTraversalPermission.SUBWAY);
+        setProperties(props, "railway=rail", StreetTraversalPermission.RAIL);
+        setProperties(props, "psv=yes", StreetTraversalPermission.PSV);
+        setProperties(props, "psv=bus", StreetTraversalPermission.PSV);
+
         /*
          * Automobile speeds in the United States: Based on my (mattwigway) personal experience, primarily in California
          */

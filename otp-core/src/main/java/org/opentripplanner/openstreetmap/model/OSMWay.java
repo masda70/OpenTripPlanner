@@ -119,4 +119,15 @@ public class OSMWay extends OSMWithTags {
                 || (cyclewayLeft != null && cyclewayLeft.startsWith("opposite"))
                 || (cyclewayRight != null && cyclewayRight.startsWith("opposite"));
     }
+
+    /**
+     * Returns true if this is a one-way street allow opposite PSV traffic
+     *
+     * @return
+     */
+    public boolean isOpposablePSV() {
+        String psv = getTag("psv");
+        return (psv != null && psv.startsWith("opposite_lane"));
+    }
+
 }

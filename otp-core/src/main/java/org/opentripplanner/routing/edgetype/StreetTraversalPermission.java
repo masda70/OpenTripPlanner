@@ -45,6 +45,10 @@ public enum StreetTraversalPermission {
     PEDESTRIAN_AND_DRIVING(8 | 4 | 1),
     BICYCLE_AND_DRIVING(8 | 4 | 2),
     ALL(8 | 4 | 2 | 1),
+    TRAM(32),
+    RAIL(64),
+    SUBWAY(128),
+    PSV(256),
     CROSSHATCHED(16); // this street exists in both Beszel and Ul Qoma; traffic direction may depend on which city you're in.
 
     private static final Map<Integer, StreetTraversalPermission> lookup = new HashMap<Integer, StreetTraversalPermission>();
