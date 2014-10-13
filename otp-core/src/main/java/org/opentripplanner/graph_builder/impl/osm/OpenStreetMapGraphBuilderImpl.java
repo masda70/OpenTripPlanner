@@ -2465,21 +2465,13 @@ public class OpenStreetMapGraphBuilderImpl implements GraphBuilder {
             StreetTraversalPermission permissionsBack = permissions;
 
             // Check driving direction restrictions.
-            if (way.isOneWayForwardDriving() || way.isRoundabout()) {
+            if ((way.isOneWayForwardDriving() && !way.isOpposablePSV()) || way.isRoundabout()) {
                 permissionsBack = permissionsBack
                         .remove(StreetTraversalPermission.BICYCLE_AND_DRIVING);
-                if(!way.isOpposablePSV()){
-                    // unless PSV contraflow is allowed, remove opposite flow PSV permissions
-                    permissionsBack = permissionsBack
-                            .remove(StreetTraversalPermission.PSV);
-                }
             }
             if (way.isOneWayReverseDriving()) {
                 permissionsFront = permissionsFront
                         .remove(StreetTraversalPermission.BICYCLE_AND_DRIVING);
-                // remove PSV front flow allowance
-                permissionsFront = permissionsFront
-                        .remove(StreetTraversalPermission.PSV);
             }
 
             // Check bike direction restrictions.
